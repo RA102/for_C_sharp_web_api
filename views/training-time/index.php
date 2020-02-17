@@ -17,10 +17,10 @@ use \yii\helpers\ArrayHelper;
             <thead>
             <tr>
                 <th>Номер зала</th>
-                <th>Вместимость</th>
-                <th>Статус</th>
+<!--                <th>Вместимость</th>-->
+<!--                <th>Статус</th>-->
                 <th>Тренер</th>
-                <th>Вид(инд/групп)</th>
+<!--                <th>Вид(инд/групп)</th>-->
                 <th>Кол-во участников</th>
             </tr>
             </thead>
@@ -28,20 +28,20 @@ use \yii\helpers\ArrayHelper;
             <?php foreach ($content as $item): ?>
                 <tr>
                     <td>
-                        <?= ArrayHelper::getValue($item, 'Gym.Number') ?>
+                        <?= ArrayHelper::getValue($item, 'Number') ?>
                     </td>
+<!--                    <td>-->
+<!--                        --><?//= ArrayHelper::getValue($item, 'Gym.Capacity') ?>
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        --><?//= ArrayHelper::getValue($item, 'Gym.Active') ?>
+<!--                    </td>-->
                     <td>
-                        <?= ArrayHelper::getValue($item, 'Gym.Capacity') ?>
+                        <?= ArrayHelper::getValue($item, 'FIO') ?>
                     </td>
-                    <td>
-                        <?= ArrayHelper::getValue($item, 'Gym.Active') ?>
-                    </td>
-                    <td>
-                        <?= ArrayHelper::getValue($item, 'Coach.FIO') ?>
-                    </td>
-                    <td>
-                        <?= ArrayHelper::getValue($item, 'Type.TypeName') ?>
-                    </td>
+<!--                    <td>-->
+<!--                        --><?//= ArrayHelper::getValue($item, 'Type.TypeName') ?>
+<!--                    </td>-->
                     <td>
                         <?= ArrayHelper::getValue($item, 'Quantity') ?>
                     </td>

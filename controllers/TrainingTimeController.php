@@ -4,6 +4,7 @@
 
 namespace app\controllers;
 
+use Yii;
 use yii\base\ErrorException;
 use yii\httpclient\Client;
 use yii\httpclient\Exception;
@@ -46,9 +47,11 @@ class TrainingTimeController extends Controller
 
     public function actionCreate()
     {
+
         $request = Yii::$app->request;
         if ($request->isPost) {
-            
+            return true;
+
         }
         try {
 
@@ -61,17 +64,24 @@ class TrainingTimeController extends Controller
                     'format' => Client::FORMAT_JSON,
                 ]
             ]);
-            $response = $client->createRequest()
-                ->setMethod('get')
-                ->setUrl('TimingTrainings/')
-                ->send();
+//            $response = $client->createRequest()
+//                ->setMethod('get')
+//                ->setUrl('coach/')
+//                ->send();
+            $dataCoach = $client->get('coach')->send();
+            $dataGym = $client->get('gym')->send();
+            $dataTypeTraining = $client->get('type')->send();
+
         } catch (\Exception $exception) {
             throw new Exception('Сервер не доступен', $exception->getCode());
         }
 
         $content = json_decode($response->getContent());
-
-
+        if($response->isOk){
+            return $this->render('create', [
+                'content' => $content,
+            ]);
+        }
     }
 
 }
